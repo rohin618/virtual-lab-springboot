@@ -1,0 +1,92 @@
+package com.sprintboot.virtualLab.entity;
+
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "problems")
+public class Problems {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false)
+    private String problemTitle;
+
+    @Column(length = 1000)
+    private String problemDescription;
+
+    private String test1;
+    private String output1;
+    private String test2;
+    private String output2;
+
+    @ManyToOne
+    @JoinColumn(name = "problem_topics_id", referencedColumnName = "id")
+    private ProblemTopics problemTopics;
+
+    // Getters and Setters
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getProblemTitle() {
+        return problemTitle;
+    }
+
+    public void setProblemTitle(String problemTitle) {
+        this.problemTitle = problemTitle;
+    }
+
+    public String getProblemDescription() {
+        return problemDescription;
+    }
+
+    public void setProblemDescription(String problemDescription) {
+        this.problemDescription = problemDescription;
+    }
+
+    public String getTest1() {
+        return test1;
+    }
+
+    public void setTest1(String test1) {
+        this.test1 = test1;
+    }
+
+    public String getOutput1() {
+        return output1;
+    }
+
+    public void setOutput1(String output1) {
+        this.output1 = output1;
+    }
+
+    public String getTest2() {
+        return test2;
+    }
+
+    public void setTest2(String test2) {
+        this.test2 = test2;
+    }
+
+    public String getOutput2() {
+        return output2;
+    }
+
+    public void setOutput2(String output2) {
+        this.output2 = output2;
+    }
+
+    public ProblemTopics getProblemTopics() {
+        return problemTopics;
+    }
+
+    public void setProblemTopics(ProblemTopics problemTopics) {
+        this.problemTopics = problemTopics;
+    }
+}
