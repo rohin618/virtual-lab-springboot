@@ -28,4 +28,14 @@ public class ProblemTopicOverviewController {
     public  ResponseEntity<List<ProblemTopicOverview>> getProblemTopicOverview(){
     return ResponseEntity.ok(problemTopicsOverviewService.getAll());
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteProblemTopicOverview(@PathVariable Long id){
+        return ResponseEntity.ok(problemTopicsOverviewService.delete(id));
+    }
+
+    @PutMapping
+    public ResponseEntity<ProblemTopicOverviewDto> updateProblemTopicOverview(ProblemTopicOverviewDto problemTopicOverviewDto){
+        return ResponseEntity.ok(problemTopicsOverviewService.update(problemTopicOverviewDto));
+    }
 }

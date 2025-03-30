@@ -4,10 +4,7 @@ package com.sprintboot.virtualLab.controller;
 import com.sprintboot.virtualLab.dto.ProblemSetsDto;
 import com.sprintboot.virtualLab.service.ProblemSetsService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/problemSets")
@@ -21,7 +18,7 @@ public class ProblemSetsController {
     }
 
     @PostMapping
-    public ResponseEntity<?> createProblemSets(ProblemSetsDto problemSetsDto){
+    public ResponseEntity<?> createProblemSets(@RequestBody  ProblemSetsDto problemSetsDto){
         return ResponseEntity.ok(problemSetsService.create(problemSetsDto));
     }
 
@@ -29,4 +26,5 @@ public class ProblemSetsController {
     public ResponseEntity<?> getAllProblemSets(){
         return ResponseEntity.ok(problemSetsService.getAll());
     }
+
 }

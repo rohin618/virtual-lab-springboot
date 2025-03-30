@@ -9,5 +9,7 @@ public interface ProblemTopicsOverviewInterface {
 
       ProblemTopicOverviewDto create(ProblemTopicOverviewDto problemTopicOverviewDto);
       List<ProblemTopicOverview> getAll();
+      ProblemTopicOverviewDto update(ProblemTopicOverviewDto problemTopicOverviewDto);
+      String delete(Long id);
 
 }

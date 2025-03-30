@@ -9,13 +9,13 @@ public class ProblemsDto {
     private String output1;
     private String test2;
     private String output2;
-    private Long problemTopicsId;
+    private Long problemSetId;
 
     // Constructors
     public ProblemsDto() {
     }
 
-    public ProblemsDto(Long id, String problemTitle, String problemDescription, String test1, String output1, String test2, String output2, Long problemTopicsId) {
+    public ProblemsDto(Long id, String problemTitle, String problemDescription, String test1, String output1, String test2, String output2, Long problemSetId) {
         this.id = id;
         this.problemTitle = problemTitle;
         this.problemDescription = problemDescription;
@@ -23,7 +23,7 @@ public class ProblemsDto {
         this.output1 = output1;
         this.test2 = test2;
         this.output2 = output2;
-        this.problemTopicsId = problemTopicsId;
+        this.problemSetId = problemSetId;
     }
 
     // Getters and Setters
@@ -83,11 +83,11 @@ public class ProblemsDto {
         this.output2 = output2;
     }
 
-    public Long getProblemTopicsId() {
-        return problemTopicsId;
+    public Long getProblemSetId() {
+        return problemSetId;
     }
 
-    public void setProblemTopicsId(Long problemTopicsId) {
-        this.problemTopicsId = problemTopicsId;
+    public void setProblemSetId(Long problemSetId) {
+        this.problemSetId = problemSetId;
     }
 }

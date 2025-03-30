@@ -27,9 +27,7 @@ public class ProblemSetsService implements ProblemSetsInterface{
 
     @Override
     public ProblemSetsDto create(ProblemSetsDto problemSetsDto) {
-
         Optional<ProblemTopics> problemTopicsOptional = problemTopicsRepository.findById(problemSetsDto.getProblemTopicsId());
-
         ProblemSetsDto problemSetsDto1 = null;
         if(problemTopicsOptional.isPresent()){
             problemSetsDto1 = ProblemSetsMapper.mapToDto(problemSetsRepository.save(ProblemSetsMapper.mapToEntity(problemSetsDto,problemTopicsOptional.get())));

@@ -2,11 +2,11 @@ package com.sprintboot.virtualLab.service;
 
 import com.sprintboot.virtualLab.dto.CourseDto;
 import com.sprintboot.virtualLab.entity.Course;
+import com.sprintboot.virtualLab.entity.ProblemSets;
 import com.sprintboot.virtualLab.entity.ProblemTopics;
 import com.sprintboot.virtualLab.exception.ResourceNotFoundException;
 import com.sprintboot.virtualLab.mapper.CourseMapper;
-import com.sprintboot.virtualLab.repository.CourseRepository;
-import com.sprintboot.virtualLab.repository.ProblemTopicsRepository;
+import com.sprintboot.virtualLab.repository.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +26,12 @@ public class CourseService implements CourseServiceInterface{
     CourseRepository courseRepository;
     @Autowired
     ProblemTopicsRepository problemTopicsRepository;
+    @Autowired
+    ProblemTopicOverviewRepository problemTopicOverviewRepository;
+    @Autowired
+    ProblemSetsRepository problemSetsRepository;
+    @Autowired
+    ProblemsRepository problemsRepository;
 
 
     @Override
@@ -63,14 +69,39 @@ public class CourseService implements CourseServiceInterface{
     }
 
     @Override
+    @Transactional
     public void deleteCourse(Long id) {
         Course course = courseRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Course not found with id: " + id));
 
         if (course.getProblemTopics() != null) {
+            Long problemTopicsId = course.getProblemTopics().getId();
+            System.out.println("Deleting ProblemTopics with ID: " + problemTopicsId);
+
+            // Step 1: Delete Problems linked to ProblemSets
+            List<ProblemSets> problemSetsList = problemSetsRepository.findAllByProblemTopicsId(problemTopicsId);
+            if (problemSetsList != null && !problemSetsList.isEmpty()) {
+                for (ProblemSets problemSet : problemSetsList) {
+                    if (problemSet.getId() != null) {
+                        problemsRepository.deleteAllByProblemSetsId(problemSet.getId()); // Delete Problems
+                    }
+                }
+            }
+
+            // Step 2: Delete ProblemSets linked to ProblemTopics
+            problemSetsRepository.deleteAllByProblemTopicsId(problemTopicsId);
+
+            // Step 3: Delete ProblemTopicOverview entries linked to ProblemTopics
+            problemTopicOverviewRepository.deleteAllByProblemTopicsId(problemTopicsId);
+
+            // Step 4: Delete ProblemTopics entry
             problemTopicsRepository.delete(course.getProblemTopics());
         }
 
+        // Step 5: Delete the Course
         courseRepository.delete(course);
     }
+
+
+
 }

@@ -21,9 +21,9 @@ public class Problems {
     private String test2;
     private String output2;
 
-    @ManyToOne
-    @JoinColumn(name = "problem_topics_id", referencedColumnName = "id")
-    private ProblemTopics problemTopics;
+    @OneToOne
+    @JoinColumn(name = "problemsSet_id", referencedColumnName = "id")
+    private ProblemSets problemSets;
 
     // Getters and Setters
     public Long getId() {
@@ -82,11 +82,11 @@ public class Problems {
         this.output2 = output2;
     }
 
-    public ProblemTopics getProblemTopics() {
-        return problemTopics;
+    public ProblemSets getProblemSets() {
+        return problemSets;
     }
 
-    public void setProblemTopics(ProblemTopics problemTopics) {
-        this.problemTopics = problemTopics;
+    public void setProblemSets(ProblemSets problemSets) {
+        this.problemSets = problemSets;
     }
 }
