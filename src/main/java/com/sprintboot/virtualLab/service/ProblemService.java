@@ -66,6 +66,12 @@ public class ProblemService implements ProblemInterface {
         return ProblemMapper.mapToDto(updatedProblem);
     }
 
+    @Override
+    public List<Problems> getSingleProblem(Long id) {
+        List<Problems> problems = problemsRepository.findAllByProblemSetsId(id);
+        return problems;
+    }
+
     /**
      * Delete a problem by ID
      */

@@ -11,5 +11,6 @@ public interface ProblemTopicsOverviewInterface {
       List<ProblemTopicOverview> getAll();
       ProblemTopicOverviewDto update(ProblemTopicOverviewDto problemTopicOverviewDto);
       String delete(Long id);
+      List<ProblemTopicOverview> getAllByProblemTopicId(Long id);
 
 }

@@ -73,4 +73,10 @@ public class ProblemTopicsOverviewService implements ProblemTopicsOverviewInterf
         problemTopicOverviewRepository.delete(problemTopicOverview);
         return "ProblemTopicOverview deleted successfully.";
     }
+
+    @Override
+    public List<ProblemTopicOverview> getAllByProblemTopicId(Long id) {
+        List<ProblemTopicOverview> problemTopicOverviews = problemTopicOverviewRepository.findAllByProblemTopicsId(id);
+        return problemTopicOverviews;
+    }
 }

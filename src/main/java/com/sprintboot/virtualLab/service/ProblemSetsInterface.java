@@ -9,4 +9,5 @@ public interface ProblemSetsInterface {
 
     ProblemSetsDto create(ProblemSetsDto problemSetsDto);
     List<ProblemSets> getAll();
+    List<ProblemSets> getAllByProblemTopicId(Long id);
 }

@@ -40,4 +40,10 @@ public class ProblemSetsService implements ProblemSetsInterface{
     public List<ProblemSets> getAll() {
         return problemSetsRepository.findAll();
     }
+
+    @Override
+    public List<ProblemSets> getAllByProblemTopicId(Long id) {
+        List<ProblemSets> problemSets = problemSetsRepository.findAllByProblemTopicsId(id);
+        return problemSets;
+    }
 }

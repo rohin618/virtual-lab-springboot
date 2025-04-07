@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -57,6 +58,11 @@ public class ProblemTopicsService {
                 problemTopics.getCourseDescription(),
                 course.getId()
         );
+    }
+
+    public ProblemTopics getProblemTopicByCourseId(Long courseId) {
+        return problemTopicsRepository.findByCourseId(courseId)
+                .orElseThrow(() -> new RuntimeException("ProblemTopic not found for course ID: " + courseId));
     }
 
 }

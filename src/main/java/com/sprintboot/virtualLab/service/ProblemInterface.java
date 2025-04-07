@@ -10,4 +10,5 @@ public interface ProblemInterface {
     List<Problems> getAllProblem();
     String deleteProblem(Long id);
     ProblemsDto updateProblem(ProblemsDto problemsDto);
+    List<Problems> getSingleProblem(Long id);
 }
