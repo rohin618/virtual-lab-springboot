@@ -3,11 +3,9 @@ package com.sprintboot.virtualLab.controller;
 import com.sprintboot.virtualLab.dto.ProblemTopicsDto;
 import com.sprintboot.virtualLab.entity.ProblemTopics;
 import com.sprintboot.virtualLab.service.ProblemTopicsService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/problemTopics")
@@ -39,4 +37,11 @@ public class ProblemTopicsController {
         }
     }
 
+    @PutMapping
+    public ResponseEntity<?> updateProblemTopic(@RequestBody ProblemTopicsDto problemTopicsDto){
+
+        return null;
+    }
+
 }
+

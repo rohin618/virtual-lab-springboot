@@ -33,6 +33,7 @@ public class JwtUtil {
         UserEntity user = userOptional.get();
         return Jwts.builder()
                 .setSubject(username)
+                .claim("userId", user.getId())
                 .claim("role", user.getRole())
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + jwtExpirationMs))
@@ -42,6 +43,9 @@ public class JwtUtil {
 
     public String extractUsername(String token) {
         return getClaims(token).getSubject();
+    }
+    public Long extractUserId(String token) {
+        return getClaims(token).get("userId", Long.class);
     }
 
     public String extractRole(String token) {
