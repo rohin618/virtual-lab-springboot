@@ -11,6 +11,7 @@ public class CourseProblemEntity {
     private Long id;
 
     private String userCourseStr;
+
     private Long problemId;
 
     @Column(columnDefinition = "TEXT")
@@ -19,8 +20,7 @@ public class CourseProblemEntity {
     @Column(columnDefinition = "TEXT")
     private String testcase;
 
-    public CourseProblemEntity() {
-    }
+    public CourseProblemEntity() {}
 
     public CourseProblemEntity(String userCourseStr, Long problemId, String currentCode, String testcase) {
         this.userCourseStr = userCourseStr;
@@ -29,43 +29,19 @@ public class CourseProblemEntity {
         this.testcase = testcase;
     }
 
-    public Long getId() {
-        return id;
-    }
+    // Getters and setters
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public String getUserCourseStr() { return userCourseStr; }
+    public void setUserCourseStr(String userCourseStr) { this.userCourseStr = userCourseStr; }
 
-    public String getUserCourseStr() {
-        return userCourseStr;
-    }
+    public Long getProblemId() { return problemId; }
+    public void setProblemId(Long problemId) { this.problemId = problemId; }
 
-    public void setUserCourseStr(String userCourseStr) {
-        this.userCourseStr = userCourseStr;
-    }
+    public String getCurrentCode() { return currentCode; }
+    public void setCurrentCode(String currentCode) { this.currentCode = currentCode; }
 
-    public Long getProblemId() {
-        return problemId;
-    }
-
-    public void setProblemId(Long problemId) {
-        this.problemId = problemId;
-    }
-
-    public String getCurrentCode() {
-        return currentCode;
-    }
-
-    public void setCurrentCode(String currentCode) {
-        this.currentCode = currentCode;
-    }
-
-    public String getTestcase() {
-        return testcase;
-    }
-
-    public void setTestcase(String testcase) {
-        this.testcase = testcase;
-    }
+    public String getTestcase() { return testcase; }
+    public void setTestcase(String testcase) { this.testcase = testcase; }
 }
